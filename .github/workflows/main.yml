@@ -10,7 +10,7 @@ on:
 env:
   AWS_REGION: ap-northeast-2
   ECR_REPOSITORY: terraform-ecr
-
+  
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -104,7 +104,7 @@ jobs:
         fi
         
         # 이미지 태그 업데이트
-        sed -i "s|image:.*$ECR_REPOSITORY:.*|image: $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION|g" manifests/nginx-app/nginx-deploy.yaml
+        sed -i "s|image:.*$ECR_REPOSITORY:.*|image: $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION|g" nginx-deploy.yaml
         
         echo "Updated image in nginx-deploy.yaml:"
         cat manifests/nginx-app/nginx-deploy.yaml | grep "image:"
